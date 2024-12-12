@@ -3,10 +3,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load the NBA player statistics dataset
-url = "nba_data_processed.csv"  # Replace this with the path to your uploaded CSV file
+url = "nba_data_processed.csv"  # Ensure this path is correct
 
 # Load the dataset
-data = pd.read_csv(url)
+try:
+    data = pd.read_csv(url)
+except FileNotFoundError:
+    st.error("The dataset file was not found. Please check the file path.")
+    st.stop()
 
 # Streamlit app starts here
 st.title("NBA Player Statistics Viewer")
@@ -16,6 +20,11 @@ st.write("Explore NBA player statistics with filtering and visualization tools."
 st.header("Dataset Overview")
 st.write("Here's a preview of the dataset:")
 st.dataframe(data)
+
+# Check if necessary columns exist
+if 'Age' not in data.columns or 'PTS' not in data.columns:
+    st.error("The dataset must contain 'Age' and 'PTS' columns.")
+    st.stop()
 
 # Filter by age
 st.sidebar.header("Filters")
