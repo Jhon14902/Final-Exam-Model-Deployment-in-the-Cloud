@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load the NBA player statistics dataset
-url = "nba_data_processed.csv"  # Ensure this path is correct
+url = "https://drive.google.com/file/d/1GLG5k17RLeeFgFWS-ISxkjubnUu1cHJj/view?usp=drive_link"  # Ensure this path is correct
 
 # Load the dataset
 try:
