@@ -17,11 +17,12 @@ st.header("Dataset Overview")
 st.write("Here's a preview of the dataset:")
 st.dataframe(data)
 
-# Filter by age, height, or weight
+# Filter by age
 st.sidebar.header("Filters")
 min_age = st.sidebar.slider("Minimum Age", int(data["Age"].min()), int(data["Age"].max()), int(data["Age"].min()))
 max_age = st.sidebar.slider("Maximum Age", int(data["Age"].min()), int(data["Age"].max()), int(data["Age"].max()))
 
+# Filter the data
 filtered_data = data[(data["Age"] >= min_age) & (data["Age"] <= max_age)]
 
 st.header("Filtered Data")
